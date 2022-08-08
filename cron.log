@@ -1,0 +1,46 @@
+config.eager_load is set to nil. Please update your config/environments/*.rb files accordingly:
+
+  * development - set it to false
+  * test - set it to false (unless you use a tool that preloads your test environment)
+  * production - set it to true
+
+/Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/connection_adapters/connection_specification.rb:250:in `resolve_symbol_connection': The `developmen` database is not configured for the `developmen` environment.
+
+Available databases configurations are:
+
+default
+development
+test
+production
+ (ActiveRecord::AdapterNotSpecified)
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/connection_adapters/connection_specification.rb:218:in `resolve_connection'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/connection_adapters/connection_specification.rb:139:in `resolve'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/connection_handling.rb:170:in `resolve_config_for_connection'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/connection_handling.rb:50:in `establish_connection'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/railtie.rb:201:in `block (2 levels) in <class:Railtie>'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:71:in `class_eval'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:71:in `block in execute_hook'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:61:in `with_execution_control'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:66:in `execute_hook'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:52:in `block in run_load_hooks'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:51:in `each'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activesupport-6.0.5.1/lib/active_support/lazy_load_hooks.rb:51:in `run_load_hooks'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/base.rb:327:in `<module:ActiveRecord>'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/activerecord-6.0.5.1/lib/active_record/base.rb:27:in `<main>'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/zeitwerk-2.6.0/lib/zeitwerk/kernel.rb:35:in `require'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:376:in `active_record_configured?'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:293:in `disconnect_database'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:111:in `preload'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:157:in `serve'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:145:in `block in run'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:139:in `loop'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application.rb:139:in `run'
+	from /Users/tzlil/.rvm/gems/ruby-2.6.9/gems/spring-2.1.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+	from /Users/tzlil/.rvm/rubies/ruby-2.6.9/lib/ruby/site_ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/tzlil/.rvm/rubies/ruby-2.6.9/lib/ruby/site_ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from -e:1:in `<main>'
+hello world!
+Running via Spring preloader in process 31185
+WARNING: Spring is running in production. To fix this make sure the spring gem is only present in `development` and `test` groups in your Gemfile and make sure you always use `bundle install --without development test` in production

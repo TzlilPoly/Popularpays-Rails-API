@@ -7,7 +7,8 @@ class GigsController < ApplicationController
     brand_name_param = params[:brand_name] ? params[:brand_name] : nil
     creator_id_param = params[:creator_id] ? params[:creator_id] : nil
     if brand_name_param or creator_id_param
-      @gigs = Gig.where("brand_name = ? OR creator_id = ?", brand_name_param, creator_id_param)
+      # @gigs = Gig.where("brand_name = ? OR creator_id = ?", brand_name_param, creator_id_param)
+      @gigs = Gig.where({ brand_name: brand_name_param, creator_id: creator_id_param})
       render json: @gigs
     else
       @gigs = Gig.all
@@ -57,9 +58,16 @@ class GigsController < ApplicationController
   # PATCH/PUT /gigs/1
   def update
     if gig_params[:state] == "completed"
-      # puts @gig.generate_gig_payment
-      @gig.complete!
+      if gig_params[:creator_id]
+        if Creator.find_by(id: gig_params[:creator_id])
+          @gig.complete!
+        end
+      else
+          @gig.complete!
+      end
     end
+
+
     if @gig.update(gig_params)
       render json: @gig
     else

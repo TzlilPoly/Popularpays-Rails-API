@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'Test Creator End Points', type: :request do
+  let(:creator) { Creator.create(first_name: 'first_name', last_name: 'last_name') }
+
   before :all do
     ApiKey.create(key: '1234', creator_access: true, gig_access: true, gig_payment_access: true)
   end
 
   describe 'GET /creators' do
     before do
-      @creator = Creator.create(first_name: 'first_name', last_name: 'last_name')
+      # creator = Creator.create(first_name: 'first_name', last_name: 'last_name')
       get '/creators', :headers => { 'apiKey' => '1234' }
     end
 
     it 'returns all creators' do
       parsed_body = JSON.parse(response.body)
 
-      expect(parsed_body["data"][0]["attributes"]["first-name"]).to be_eql @creator.first_name
-      expect(parsed_body["data"][0]["attributes"]["last-name"]).to be_eql @creator.last_name
+      expect(parsed_body["data"][0]["attributes"]["first-name"]).to be_eql creator.first_name
+      expect(parsed_body["data"][0]["attributes"]["last-name"]).to be_eql creator.last_name
     end
 
     it 'returns status code 200' do
@@ -48,16 +50,15 @@ RSpec.describe 'Test Creator End Points', type: :request do
 
   describe 'GET /creators/<id>' do
     before do
-      @creator = Creator.create(first_name: 'first_name', last_name: 'last_name')
-      get "/creators/#{@creator.id}", :headers => { 'apiKey' => '1234' }
+      get "/creators/#{creator.id}", :headers => { 'apiKey' => '1234' }
     end
 
     it 'returns creator with id 1' do
       parsed_body = JSON.parse(response.body)
 
-      expect(parsed_body["data"]["id"]).to be_eql @creator.id.to_s
-      expect(parsed_body["data"]["attributes"]["first-name"]).to be_eql @creator.first_name
-      expect(parsed_body["data"]["attributes"]["last-name"]).to be_eql @creator.last_name
+      expect(parsed_body["data"]["id"]).to be_eql creator.id.to_s
+      expect(parsed_body["data"]["attributes"]["first-name"]).to be_eql creator.first_name
+      expect(parsed_body["data"]["attributes"]["last-name"]).to be_eql creator.last_name
     end
 
     it 'returns status code 200' do
